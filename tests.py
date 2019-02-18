@@ -1,6 +1,6 @@
 """ Tests on the spearhead project """
 import unittest
-from .users_models import UserBaseClass
+from users_models import UserBaseClass
 
 
 class TestUserModels(unittest.TestCase):
@@ -29,7 +29,10 @@ class TestUserModels(unittest.TestCase):
 
         self.assertTrue(self.user.verify("bedank6@gmail.com", "siriyangu"))
 
-    def test_verify__false_credentials(self):
+    def test_verify_false_credentials(self):
         """ Tests verify false credentials """
 
-        self.assertTrue(self.user.verify("bedank6@gmail.com", "siriyako"))
+        self.assertFalse(self.user.verify("bedank6@gmail.com", "siriyako"))
+
+if __name__ == '__main__':
+    unittest.main()
