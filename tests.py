@@ -3,6 +3,7 @@ import unittest
 from .users_models import UserBaseClass ,Comments
 
 
+
 class TestUserModels(unittest.TestCase):
     """ All user module tests """
 
@@ -35,8 +36,10 @@ class TestUserModels(unittest.TestCase):
 
         self.assertTrue(self.user.verify("bedank6@gmail.com", "siriyako"))
 
+
     def test_comments(self):
         """ Tests the comments """
         self.assertTrue(self.comment.create_comment())
         self.assertTrue(self.comment.edit_comment("0"))
         self.assertTrue(self.comment.delete_comment("0"))
+
