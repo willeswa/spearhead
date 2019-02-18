@@ -44,7 +44,15 @@ class Moderator(UserBaseClass):
 
 
 class Admin(Moderator):
-    pass
+    """ Admin Edit and Delete Attributes """
+    def __init__(self, id, email, password):
+        Moderator.__init__(id, email, password)
+
+    def can_edit(self, comment):
+        return True
+
+    def can_delete(self, comment):
+        return True
 
 
 class Comments:
