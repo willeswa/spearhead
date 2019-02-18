@@ -1,6 +1,6 @@
 """ Tests on the spearhead project """
 import unittest
-from .users_models import UserBaseClass
+from users_models import UserBaseClass, Comments
 
 
 class TestUserModels(unittest.TestCase):
@@ -10,7 +10,9 @@ class TestUserModels(unittest.TestCase):
         """ Create common variables among all tests """
 
         self.user = UserBaseClass(123, "bedank6@gmail.com", "siriyangu")
+
         self.moderator = Moderator(456, "evanswanjau@gmail.com", 'pass123')
+        self.comment = Comments("message", "author", "timestamp", "replying_to")
 
     def test_user_login(self):
         """ Tests whether the user is logged in """
@@ -30,8 +32,9 @@ class TestUserModels(unittest.TestCase):
 
         self.assertTrue(self.user.verify("bedank6@gmail.com", "siriyangu"))
 
-    def test_verify__false_credentials(self):
+    def test_verify_false_credentials(self):
         """ Tests verify false credentials """
+
 
         self.assertTrue(self.user.verify("bedank6@gmail.com", "siriyako"))
 
@@ -40,3 +43,15 @@ class TestUserModels(unittest.TestCase):
         """ Test moderator deletion """
 
         self.assertTrue(self.moderator.can_edit())
+
+        self.assertFalse(self.user.verify("bedank6@gmail.com", "siriyako"))
+
+    def test_comments(self):
+        """ Tests the comments """
+        self.assertTrue(self.comment.create_comment())
+        self.assertTrue(self.comment.edit_comment("0"))
+        self.assertTrue(self.comment.delete_comment("0"))
+
+if __name__ == '__main__':
+    unittest.main()
+
