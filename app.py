@@ -21,5 +21,6 @@ if user.verify(email, password):
     if choice == '1':
         Comments('message', 'author', datetime.datetime.timestamp, 'name').create_comment()
     elif choice == 2:
+        pass
 else:
     print('Invalid email or password')
