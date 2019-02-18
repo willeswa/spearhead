@@ -4,7 +4,7 @@ from datetime import datetime
 comments = []
 class UserBaseClass:
     """ Defines methods common to all users """
-    
+
     def __init__(
             self, id, email, password, is_logged_in=False, last_logged_in_at):
         """ Initialise the class """
@@ -16,7 +16,7 @@ class UserBaseClass:
         self.last_logged_in_at = last_logged_in_at
 
     def verify(self, email, password):
-        if self.email == email and self.password = password:
+        if self.email == email and self.password == password:
             return True
         return False
 
