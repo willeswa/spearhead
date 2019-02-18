@@ -10,6 +10,8 @@ class TestUserModels(unittest.TestCase):
         """ Create common variables among all tests """
 
         self.user = UserBaseClass(123, "bedank6@gmail.com", "siriyangu")
+
+        self.moderator = Moderator(456, "evanswanjau@gmail.com", 'pass123')
         self.comment = Comments("message", "author", "timestamp", "replying_to")
 
     def test_user_login(self):
@@ -32,6 +34,15 @@ class TestUserModels(unittest.TestCase):
 
     def test_verify_false_credentials(self):
         """ Tests verify false credentials """
+
+
+        self.assertTrue(self.user.verify("bedank6@gmail.com", "siriyako"))
+
+
+    def test_moderator_deletion(self):
+        """ Test moderator deletion """
+
+        self.assertTrue(self.moderator.can_edit())
 
         self.assertFalse(self.user.verify("bedank6@gmail.com", "siriyako"))
 
