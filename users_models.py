@@ -7,8 +7,12 @@ class UserBaseClass:
 
 
 class Moderator(UserBaseClass):
-    """ Defines  """
-    pass
+    """ Moderator Edit and Delete Attributes """
+    def __init__(self, id, email, password):
+        UserBaseClass.__init__(id, email, password)
+
+    def can_delete(self, comment):
+        return True
 
 
 class Admin(Moderator):
