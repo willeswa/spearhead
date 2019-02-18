@@ -1,9 +1,9 @@
-from datetime import datetime
 """ This module contains classes for the project """
 
 comments = []
 class UserBaseClass:
     """ Defines methods common to all users """
+    pass
 
     def __init__(
             self, id, email, password, is_logged_in=False, last_logged_in_at):
@@ -35,12 +35,8 @@ class UserBaseClass:
 
 
 class Moderator(UserBaseClass):
-    """ Moderator Edit and Delete Attributes """
-    def __init__(self, id, email, password):
-        UserBaseClass.__init__(id, email, password)
-
-    def can_delete(self, comment):
-        return True
+    """ Defines  """
+    pass
 
 
 class Admin(Moderator):
@@ -64,11 +60,11 @@ class Comments:
 
     def create_comment(self):
         self.comments.append({
-            "comment_id":len(self.comments)
+            "comment_id": len(self.comments),
             "message": self.message,
-            "author": self.author
-            "timestamp": self.timestamp
-            "replying_to": self.replying_to
+            "author": self.author,
+            "timestamp": self.timestamp,
+            "replying_to": self.replying_to,
         })
 
     def edit_comment(self, comment_id):

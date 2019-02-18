@@ -1,6 +1,7 @@
 """ Tests on the spearhead project """
 import unittest
-from .users_models import UserBaseClass
+from .users_models import UserBaseClass ,Comments
+
 
 
 class TestUserModels(unittest.TestCase):
@@ -10,6 +11,7 @@ class TestUserModels(unittest.TestCase):
         """ Create common variables among all tests """
 
         self.user = UserBaseClass(123, "bedank6@gmail.com", "siriyangu")
+        self.comment = Comments("message", "author", "timestamp", "replying_to")
 
     def test_user_login(self):
         """ Tests whether the user is logged in """
@@ -33,3 +35,11 @@ class TestUserModels(unittest.TestCase):
         """ Tests verify false credentials """
 
         self.assertTrue(self.user.verify("bedank6@gmail.com", "siriyako"))
+
+
+    def test_comments(self):
+        """ Tests the comments """
+        self.assertTrue(self.comment.create_comment())
+        self.assertTrue(self.comment.edit_comment("0"))
+        self.assertTrue(self.comment.delete_comment("0"))
+
